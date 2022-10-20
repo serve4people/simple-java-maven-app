@@ -15,6 +15,23 @@ pipeline{
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('Test'){
+            steps{
+                echo "====++++executing test++++===="
+                sh "mvn test"
+            }
+            post{
+                always{
+                    junit "target/surfire-reports/*.xml"
+                }
+                success{
+                    echo "====++++Test executed successfully"
+                }
+                failure{
+                    echo "====++++Test execution failed++++===="
+                }
+            }
+        }
     }
-    
+
 }
