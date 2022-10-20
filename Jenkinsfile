@@ -22,7 +22,7 @@ pipeline{
             }
             post{
                 always{
-                    junit "target/surfire-reports/*.xml"
+                    junit "target/surefire-reports/*.xml"
                 }
                 success{
                     echo "====++++Test executed successfully"
